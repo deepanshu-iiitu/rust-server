@@ -1,19 +1,19 @@
-use std::net::TcpStream;
-use std::io::{Write, Result as IOResult};
-use std::fmt::{Display, Formatter, Result as FmtResult};
 use super::StatusCode;
+use std::fmt::{Display, Formatter, Result as FmtResult};
+use std::io::{Result as IOResult, Write};
+use std::net::TcpStream;
 #[derive(Debug)]
-pub struct Response{
+pub struct Response {
     status_code: StatusCode,
-    body:Option<String>,
+    body: Option<String>,
 }
 
-impl Response{
-    pub fn new(status_code: StatusCode, body: Option<String>) -> Self{
-        Response{ status_code, body}
+impl Response {
+    pub fn new(status_code: StatusCode, body: Option<String>) -> Self {
+        Response { status_code, body }
     }
-    pub fn send(&self, stream: &mut impl Write)-> IOResult<()>{
-        let body = match &self.body{
+    pub fn send(&self, stream: &mut impl Write) -> IOResult<()> {
+        let body = match &self.body {
             Some(b) => b,
             None => "",
         };

@@ -17,7 +17,7 @@ impl FromStr for Method {
     type Err = MethodError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        match s{
+        match s {
             "GET" => Ok(Self::GET),
             "DELETE" => Ok(Self::DELETE),
             "POST" => Ok(Self::POST),
@@ -33,4 +33,3 @@ impl FromStr for Method {
 }
 
 pub struct MethodError;
-
